@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function numbers() {
+            let num ='';
+            const number = document.getElementById('number').value;
+            if (!number) {
+                document.getElementById('result').innerText = 'Please enter a valid positive interger'
+            } else {
+                for (i = 1; i <= number; i++) {
+                   num += i + " "; 
+                }
+               document.getElementById('result').innerHTML = num;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <h3>Numbers from 1 to N</h3>
+    Enter a positive number <input type="text" id="number">
+    <input type="button" id="print" value="Print Numbers" onclick="numbers()">
+    <p id="result"></p>
+</body>
+
+</html>

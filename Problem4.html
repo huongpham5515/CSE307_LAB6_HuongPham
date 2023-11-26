@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        label {
+            width: 100px;
+            display: inline-block;
+        }
+    </style>
+    <script>
+
+        let product = [
+            {
+                "id": '1',
+                "name": "Laptop",
+                "quantity": 5,
+                "price": 1200,
+                "image": "laptop_image.jpg"
+            },
+            {
+                "id": '2',
+                "name": "Phone",
+                "quantity": 10,
+                "price": 1200,
+                "image": "phone_image.jpg"
+            },
+            {
+                "id": '3',
+                "name": "Tablet",
+                "quantity": 8,
+                "price": 500,
+                "image": "tablet_image.jpg"
+            }
+        ];
+        console.log("Initial Product");
+        console.log(product);
+
+        function sor(a, b) {
+            let x = a.name.toLowerCase();
+            let y = b.name.toLowerCase();
+            if (x < y) {
+                return -1;
+            }
+            if (x > y) {
+                return 1;
+            }
+            return 0;
+        }
+        function sort() {
+            product.sort(sor);
+            console.log(product);
+        }
+        function addTail() {
+            id = document.getElementById('id').value;
+            name = document.getElementById('name').value;
+            quantity = document.getElementById('quantity').value;
+            price = document.getElementById('price').value;
+            image = document.getElementById('image').value;
+            if (check(id, name, product) === false) {
+                product.push({ id, name, quantity, price, image });
+                console.log("Update Products:")
+                console.log(product);
+            } else {
+                console.log("Already in the list");
+            }
+
+        }
+        function addHead() {
+            id = document.getElementById('id').value;
+            name = document.getElementById('name').value;
+            quantity = document.getElementById('quantity').value;
+            price = document.getElementById('price').value;
+            image = document.getElementById('image').value;
+
+
+            product.unshift({ id, name, quantity, price, image });
+            console.log("Update Products:")
+            console.log(product);
+
+        }
+
+        function check(id, name, product) {
+            for (i = 0; i < product.length; i++) {
+                if (product[i].id === id) {
+                    return true;
+                }
+                if (product[i].name === name) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function search() {
+            let nameproduct = document.getElementById('name').value;
+            for (i = 0; i < product.length; i++) {
+                if (nameproduct == product[i].name) {
+                    console.log("Search Result:");
+                    console.log(product[i]);
+                }
+            }
+        }
+
+        function remove() {
+            let idproduct = document.getElementById('change').value;
+            for (i = 0; i < product.length; i++) {
+                if (product[i].id === idproduct) {
+                    product.splice(i, 1);
+                }
+            }
+            console.log("Update Products:")
+            console.log(product);
+        }
+
+        function edit() {
+            let idproduct = document.getElementById('change').value;
+            for (i = 0; i < product.length; i++) {
+                if (product[i].id === idproduct) {
+                    product[i].id = document.getElementById('id').value;
+                    product[i].name = document.getElementById('name').value;
+                    product[i].quantity = document.getElementById('quantity').value;
+                    product[i].price = document.getElementById('price').value;
+                    product[i].image = document.getElementById('image').value;
+                }
+            }
+            console.log("Update Products:")
+            console.log(product);
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <p>
+        <label for="change">Product: </label>
+        <input type="text" class="text" id="change">
+    </p>
+    <p>
+        <label for="id">ID:</label>
+        <input type="text" class="text" id="id" required>
+    </p>
+    <p>
+        <label for="product">name:</label>
+        <input type="text" class="text" id="name" required>
+    </p>
+    <p>
+        <label for="quantity">quantity:</label>
+        <input type="text" class="text" id="quantity">
+    </p>
+    <p>
+        <label for="price">price</label>
+        <input type="text" class="text" id="price">
+    </p>
+    <p>
+        <label for="image">image:</label>
+        <input type="text" class="text" id="image">
+    </p>
+    <button type="button" onclick="sort()">Sort</button>
+    <button type="button" onclick="addHead()">Add Head</button>
+    <button type="button" onclick="addTail()">Add Tail</button>
+    <button type="button" onclick="search()">Search</button>
+    <button type="button" onclick="remove()">Remove</button>
+    <button type="button" onclick="edit()">Edit</button>
+</body>
+
+</html>

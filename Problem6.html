@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function numbers() {
+            let isPrime = true;
+            const number = document.getElementById('number').value;
+            if (number == 1) {
+                document.getElementById('result').innerText = "Neither prime nor composite number";
+            } else if (number > 1) {
+                for (let i = 2; i < number; i++) {
+                    if (number % i == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+            if(isPrime){
+                document.getElementById('result').innerText = 'true';
+            }else{
+                document.getElementById('result').innerText = 'false';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h3>Prime Check</h3>
+    Enter a positive number <input type="text" id="number">
+    <input type="button" id="print" value="Check Prime" onclick="numbers()">
+    <p id="result"></p>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function numbers() {
+            let n = document.getElementById('number').value;
+            var numbers = [];
+            numbers.push(n.split(','));
+            numbers = numbers.flat();
+            let max = Math.max(...numbers), min = Math.min(...numbers) , sum = 0, avg = 0;
+
+            for(i = 0; i < numbers.length; i++){
+                numbers[i] = parseInt(numbers[i]);
+                sum += numbers[i];
+            }
+            avg = sum/numbers.length;
+
+            document.getElementById('result').innerHTML = 'min=' + min + '<br>max=' + max + '<br>sum=' + sum + '<br>avg=' + avg;
+
+        }
+    </script>
+</head>
+
+<body>
+    <h3>MMSA of N Numbers</h3>
+    Enter numbers separated by commas: <input type="text" id="number">
+    <input type="button" value="Calculate MMSA" onclick="numbers()">
+    <p id="result"></p>
+</body>
+
+</html>
